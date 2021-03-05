@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="em">
+    <head>
+        <title>Debit card</title>
+        <style>
+            @font-face{
+                font-family: ezaz;
+                src: url('fonts/Aladin-Regular.ttf');
+            }
+            @font-face{
+                font-family: pasha;
+                src: url('fonts/Arbutus-Regular.ttf');
+            }
+
+            *
+            {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'ezaz',sans-serif;
+            }
+            body{
+                overflow: hidden;
+            }
+            section{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background:khaki;
+            }
+            section::before{
+                content: '';
+                position:absolute;
+                bottom: -40%;
+                left: 40%;
+                width: 600px;
+                height: 600px;
+                background: linear-gradient(green,gold);
+                border-radius: 50%;
+            }
+            .card{
+                position: relative;
+                width: 508px;
+                height: 314px;
+                transform-style: preserve-3d;
+                perspective: 500px;
+            }
+            .card .face{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+                border-radius: 15px;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                transform-style: preserve-3d;
+                transition: 1s;
+                backface-visibility: hidden;
+            }
+            .card:hover .face.front{
+                transform: rotateY(180deg);
+            }
+            .card .face.back{
+                transform: rotateY(180deg);
+            }
+            .card:hover .face.back{
+                transform: rotateY(360deg);
+            }
+            .card .face.front::before{
+                content: '';
+                position: absolute;
+                bottom: 40px;
+                right: 40px;
+                width: 60px;
+                height: 60px;
+                background: plum;
+                opacity: 0.5;
+                border-radius: 50%;
+            }
+            .card .face.front::after{
+                content: '';
+                position: absolute;
+                bottom: 40px;
+                right: 80px;
+                width: 60px;
+                height: 60px;
+                background: plum;
+                opacity: 0.7;
+                border-radius: 50%;
+            }
+            img{
+                width: 70px;
+                height: 50px;
+            }
+            .card .face.front .debit{
+                position: absolute;
+                left: 40px;
+                top: 30px;
+                color: purple;
+                font-weight: 900;
+            }
+            .card .face.front .bank{
+                position: absolute;
+                right: 40px;
+                top: 30px;
+                color: purple;
+                font-weight: 1000;
+                font-style: italic;
+                font-size: 22px;
+            }
+            .card .face.front .chip{
+                position: absolute;
+                top: 80px;
+                left: 50px;
+                max-width: 64px;
+            }
+            .card .face.front .number{
+                position: absolute;
+                top: 155px;
+                left: 40px;
+                letter-spacing: 5px;
+                font-size: 19px;
+                color: purple;
+                font-weight: 800;
+                font-family: 'pasha',sans-serif;
+                text-shadow:  0 2px 1px palegoldenrod;
+            }
+            .card .face.front .valid{
+                position: absolute;
+                bottom: 90px;
+                left: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 1em;
+                color: purple;
+                font-weight: 700;
+                text-align: right;
+            }
+            .card .face.front .valid span:last-child{
+                margin-left: 20px;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 2px;
+            }
+            .card .face.front .cardholder{
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+                color: purple;
+                font-weight: 500;
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+            .card .face.back .blackbar{
+                position: absolute;
+                top: 40px;
+                width: 100%;
+                height: 60px;
+                background: greenyellow;
+            }
+            .card .face.back .cvvtext{
+                position: absolute;
+                top: 120px;
+                left: 30px;
+            }
+            .card .face.back .cvvtext h5{
+                color: black;
+                font-weight: 400;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            .card .face.back .cvvtext .whitebar
+            {
+                position: relative;
+                width: 400px;
+                height: 40px;
+                margin-top: 5px;
+                background: palevioletred;
+            }
+            .card .face.back .cvvtext .cvv{
+                position: relative;
+                width: 50px;
+                height: 30px;
+                top: -35px;
+                left: 395px;
+                font-weight: 600;
+                letter-spacing: 3px;
+                background: paleturquoise;
+                color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card .face.back .text{
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                right: 30px;
+                font-size: 10px;
+                line-height: 0.6cm;
+                font-weight: 300;
+                color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="card">
+                <div class="face front">
+                    <h3 class="debit">Dedit card</h3>
+                    <h3 class="bank">Bank Name</h3>
+                    <img src="images/chip.png" alt="chip" class="chip">
+                    <h3 class="number">5674 2532 8598 4562</h3>
+                    <h5 class="valid"><span>Valid<br>thru</span><span>11/25</span></h5>
+                    <h5 class="cardholder">SHAIK EJAJ PASHA</h5>
+                </div>
+                <div class="face back">
+                    <div class="blackbar"></div>
+                    <div class="cvvtext">
+                    <h5>Authored signature not valid untill signed</h5>
+                    <div class="whitebar"></div>
+                    <div class="cvv">143</div>
+                </div>
+                <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique accusantium autem, voluptatibus quam obcaecati quibusdam iure eaque dolorum nemo amet in nesciunt, laborum nostrum quos quae tenetur dignissimos consequatur atque dicta? Velit voluptas aliquid dolore magnam! Veniam beatae quam corrupti ex esse? Temporibus similique molestias accusantium, voluptatum mollitia non velit.</p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
